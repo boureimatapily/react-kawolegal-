@@ -4,6 +4,7 @@ import Home from './components/Home'
 import Register from './components/Register'
 import Startup from './components/Startup'
 import Login from './components/Login'
+import NotFound from './components/NotFound'
 
 
 
@@ -17,6 +18,7 @@ function App() {
       <Route exact path="/startup" component={Startup} />
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
+      <Route exact path="/notfound" component={NotFound} />
       </Switch>
    
       
