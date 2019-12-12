@@ -2,7 +2,32 @@ import React from 'react'
 import Navbar from './Navbar'
 
 
-const Register = () => {
+class Register extends React.Component {
+  constructor(props){
+            super(props)
+            this.state={ 
+              fullname:'',
+              email:'',
+              password:'',
+              confirm:''
+            }
+            this.handlechange = this.handlechange.bind(this);
+            this.handleonSubmit = this.handleonSubmit.bind(this);
+  }
+  handlechange (e){
+    this.setState( {[e.target.name] : e.target.value}) 
+    console.log(e.target.name)
+   }
+
+  handleonSubmit = (e) =>{
+    e.preventDefault();
+    console.log(this.state)
+   
+  }
+  
+  
+
+  render(){
   return (
     <div>
       <Navbar navclassName="navbar  nav-config" startup="All Startups" />
@@ -10,25 +35,26 @@ const Register = () => {
       <div className="row">
         <div className="col-lg-8 col-lg-offset-2">
           <br /><h3>Join KawoLegal. Sign up to get your Startup listed now!</h3><br />
-          <form>
+          
+          <form onSubmit={this.handleonSubmit}>
             <div className="form-group">
               <label for="exampleInputEmail1">Full Name</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Full Name" />
+              <input type="text" value={this.state.fullname} name="fullname" onChange={this.handlechange} className="form-control" id="exampleInputEmail1" placeholder="Full Name" />
             </div>
             <div className="form-group">
               <label for="exampleInputEmail1">Email address</label>
-              <input type="email" className="form-control" id="exampleInputEmail1" placeholder="Email" />
+              <input type="email"  value={this.state.email} name="email" onChange={this.handlechange} className="form-control" id="exampleInputEmail1" placeholder="Email" />
             </div>
             <div className="form-group">
               <label for="exampleInputPassword1">Password</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+              <input type="password"  value={this.state.password} name="password" onChange={this.handlechange} className="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
             <div className="form-group">
               <label for="exampleInputPassword1">Confirm Password</label>
-              <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Confirm Password" />
+              <input type="password"  value={this.state.confirm} name="confirm" onChange={this.handlechange} className="form-control" id="exampleInputPassword1" placeholder="Confirm Password" />
             </div>
 
-            <button type="submit" className="btn btn-primary">Sign up</button>
+            <button type="submit"  className="btn btn-primary">Sign up</button>
           </form>
         </div>
       </div>
@@ -52,6 +78,8 @@ const Register = () => {
       </footer>
     </div>
   )
+  }
 }
+
 
 export default Register
